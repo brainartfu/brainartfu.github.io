@@ -10,7 +10,17 @@
 *::after {
   box-sizing: border-box;
 }
-
+.hoverGroup{
+  opacity: 0;
+  position:absolute;
+  z-index: 100000;
+  top: 0px;
+  left: 0px;
+  color: #ffffff;
+  font-family: 'HelveticaNeueHeavy';
+  width:100%;
+  height:100%;
+}
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -25,6 +35,7 @@
   margin: 1rem;
   box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  position:relative;
 }
 
 .gallery-image {
@@ -35,8 +46,33 @@
   transition: transform 400ms ease-out;
 }
 
-.gallery-image:hover {
-  transform: scale(1.15);
+.gallery-item:hover > .gallery-image{
+  transform:scale(1.15);
+  filter:brightness(0.4);
+}
+
+.gallery-item:hover > .hoverGroup{
+  opacity: 1;
+  animation: fadeInFromNone 1s ease-out;
+}
+.hoverGroup h2 {
+  text-align: center;
+  text-shadow: 0px 0px 2px #ffffff;
+}
+.hoverGroup p, .hoverGroup label {
+  text-align: center;
+  font-size: 15px;
+}
+@keyframes fadeInFromNone {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity:1;
+  }
 }
 
 /*
